@@ -5,7 +5,11 @@ import { useState } from "react";
 
 import { useEffect } from "react";
 
-const AddProductForm = ({ handelFormClose, selectedProduct }) => {
+const AddProductForm = ({
+  handelFormClose,
+  selectedProduct,
+  handleRefetch,
+}) => {
   const [name, setName] = useState("");
   const [description, setDescription] = useState("");
   const [price, setPrice] = useState(0);
@@ -25,38 +29,37 @@ const AddProductForm = ({ handelFormClose, selectedProduct }) => {
       setSelectedId(selectedProduct.id);
     }
   }, [selectedProduct]);
-
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    if (!name || !description || !price || !stock || !category || !date) return;
-
-    const postProduct = async () => {
-      const productData = {
-        name,
-        description,
-        price,
-        stock,
-        category,
-        date,
-      };
-
-      if (selectedId !== null) {
-        await fetch(`http://localhost:3003/products/${selectedId}`, {
-          method: "PUT",
-          headers: { "Content-Type": "application/json" },
-          body: JSON.stringify(productData),
-        });
-      } else {
-        await fetch("http://localhost:3003/products", {
-          method: "POST",
-          headers: { "Content-Type": "application/json" },
-          body: JSON.stringify(productData),
-        });
-      }
+  const postProduct = async () => {
+    const productData = {
+      name,
+      description,
+      price,
+      stock,
+      category,
+      date,
     };
+    let response = {};
 
-    postProduct();
+    if (selectedId !== null) {
+      const data = await fetch(`http://localhost:3003/products/${selectedId}`, {
+        method: "PUT",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(productData),
+      });
 
+      response = data.ok;
+    } else {
+      const data = await fetch("http://localhost:3003/products", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(productData),
+      });
+      response = data.ok;
+    }
+    return response;
+  };
+
+  const resetForm = () => {
     // Clear form after submission
     setName("");
     setDescription("");
@@ -66,6 +69,17 @@ const AddProductForm = ({ handelFormClose, selectedProduct }) => {
     setDate("");
     setSelectedId(null);
     handelFormClose();
+    handleRefetch();
+  };
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    if (!name || !description || !price || !stock || !category || !date) return;
+
+    const response = await postProduct(); 
+    if (response) {
+      resetForm();
+    }
   };
 
   return (

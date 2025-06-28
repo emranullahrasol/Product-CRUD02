@@ -11,10 +11,20 @@ const ProductEdit = ({ handelFormClose }) => {
   const [category, setCategory] = useState("fruit");
   const [date, setDate] = useState("");
 
-  const handleSubmit = (e) => {
+  const resetForm = () => {
+    setName("");
+    setDescription("");
+    setPrice(0);
+    setStock(0);
+    setCategory("fruit");
+    setDate("");
+    handelFormClose(true);
+  };
+
+  const handleSubmit = async (e) => {
     e.preventDefault();
     if ((!name, !description, !price, !stock, !category, !date)) return;
-    const postProduct = async () => {
+     
       await fetch("http://localhost:3003/products", {
         method: "PUT",
         headers: { "Content-Type": "application/json" },
@@ -27,16 +37,10 @@ const ProductEdit = ({ handelFormClose }) => {
           date,
         }),
       });
-    };
+    
 
-    setName("");
-    setDescription("");
-    setPrice(0);
-    setStock(0);
-    setCategory("fruit");
-    setDate("");
-    handelFormClose(true);
-    postProduct();
+    resetForm()
+     
   };
   return (
     <div className="form--container">

@@ -1,38 +1,17 @@
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import ProductList from "./ProductList";
 import { BsCardList } from "react-icons/bs";
 import Input from "./Input";
 
-const Product = ({ handleEdit }) => {
-  const [products, setProducts] = useState([]);
-  const [loading, setLoading] = useState(false);
-  const [error, setError] = useState(null);
+const Product = ({ handleEdit, fetchProductsActions }) => {
+  // const [products, setProducts] = useState([]);
+  // const [loading, setLoading] = useState(false);
+  // const [error, setError] = useState(null);
   const [search, setSearch] = useState("");
 
-  const searchedProducts = products.filter((product) =>
+  const searchedProducts = fetchProductsActions.products.filter((product) =>
     product.name.toLowerCase().includes(search.toLowerCase())
   );
-
-  // Get all products:-
-  useEffect(() => {
-    const fetchProducts = async () => {
-      try {
-        setLoading(true);
-        const res = await fetch("http://localhost:3003/products");
-        if (!res.ok) {
-          throw new Error("Couldn't fetch data try again!");
-        }
-        const data = await res.json();
-        setError(null);
-        setProducts(data);
-      } catch (err) {
-        setError(err.message);
-      } finally {
-        setLoading(false);
-      }
-    };
-    fetchProducts();
-  }, []);
 
   const handleDelete = async (id) => {
     try {
@@ -40,7 +19,7 @@ const Product = ({ handleEdit }) => {
         method: "Delete",
       });
 
-      setProducts((prevProducts) =>
+      fetchProductsActions.setProducts((prevProducts) =>
         prevProducts.filter((product) => product.id !== id)
       );
     } catch (error) {
@@ -50,17 +29,24 @@ const Product = ({ handleEdit }) => {
 
   return (
     <div className="product--container">
-      {error && <p className="error">Error: {error}</p>}
-      {loading && <p className="loading">Loading Products</p>}
+      {fetchProductsActions.error && (
+        <p className="error">Error: {fetchProductsActions.error}</p>
+      )}
+      {fetchProductsActions.loading && (
+        <p className="loading">Loading Products</p>
+      )}
       <div className="product--flex">
         <h3 className="product--heading">
           <BsCardList className="icon" />
           Products List
         </h3>
-        <b>Total Products: {products.length}</b>
+        <b>Total Products: {fetchProductsActions.products.length}</b>
         <b>
           Total Products Price:{" "}
-          {products.reduce((total, products) => total + products.price, 0)}
+          {fetchProductsActions.products.reduce(
+            (total, product) => total + product.price,
+            0
+          )}
         </b>
         <Input
           type={"text"}
