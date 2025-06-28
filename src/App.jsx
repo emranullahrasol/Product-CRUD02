@@ -7,6 +7,17 @@ import ProductDetails from "./components/ProductDetails";
 
 const App = () => {
   const [formOpen, setFormOpen] = useState(false);
+  const [selectedProduct, setSelectedProduct] = useState(null);
+
+  const handleEdit = (product) => {
+    setSelectedProduct(product);
+    setFormOpen(true);
+  };
+
+  const handleEditClose = () => {
+    setSelectedProduct(null);
+    setFormOpen(false);
+  };
 
   const handelFormOpen = () => {
     setFormOpen(true);
@@ -19,9 +30,13 @@ const App = () => {
   return (
     <div className="container">
       <Header handelFormOpen={handelFormOpen} />
-      <Product />
-      {formOpen && <AddProductForm handelFormClose={handelFormClose} />}
-      {/* <ProductDetails /> */}
+      <Product handleEdit={handleEdit} />
+      {formOpen && (
+        <AddProductForm
+          handelFormClose={handelFormClose}
+          selectedProduct={selectedProduct}
+        />
+      )}
     </div>
   );
 };

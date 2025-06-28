@@ -3,72 +3,41 @@ import Button from "./Button";
 import { FaX } from "react-icons/fa6";
 import { useState } from "react";
 
-import { useEffect } from "react";
-
-const AddProductForm = ({ handelFormClose, selectedProduct }) => {
+const ProductEdit = ({ handelFormClose }) => {
   const [name, setName] = useState("");
   const [description, setDescription] = useState("");
   const [price, setPrice] = useState(0);
   const [stock, setStock] = useState(0);
   const [category, setCategory] = useState("fruit");
   const [date, setDate] = useState("");
-  const [selectedId, setSelectedId] = useState(null);
-
-  // If editing, populate fields
-  useEffect(() => {
-    if (selectedProduct) {
-      setName(selectedProduct.name);
-      setDescription(selectedProduct.description);
-      setPrice(selectedProduct.price);
-      setStock(selectedProduct.stock);
-      setCategory(selectedProduct.category);
-      setDate(selectedProduct.date);
-      setSelectedId(selectedProduct.id);
-    }
-  }, [selectedProduct]);
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    if (!name || !description || !price || !stock || !category || !date) return;
-
+    if ((!name, !description, !price, !stock, !category, !date)) return;
     const postProduct = async () => {
-      const productData = {
-        name,
-        description,
-        price,
-        stock,
-        category,
-        date,
-      };
-
-      if (selectedId !== null) {
-        await fetch(`http://localhost:3003/products/${selectedId}`, {
-          method: "PUT",
-          headers: { "Content-Type": "application/json" },
-          body: JSON.stringify(productData),
-        });
-      } else {
-        await fetch("http://localhost:3003/products", {
-          method: "POST",
-          headers: { "Content-Type": "application/json" },
-          body: JSON.stringify(productData),
-        });
-      }
+      await fetch("http://localhost:3003/products", {
+        method: "PUT",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          name,
+          description,
+          price,
+          stock,
+          category,
+          date,
+        }),
+      });
     };
 
-    postProduct();
-
-    // Clear form after submission
     setName("");
     setDescription("");
     setPrice(0);
     setStock(0);
     setCategory("fruit");
     setDate("");
-    setSelectedId(null);
-    handelFormClose();
+    handelFormClose(true);
+    postProduct();
   };
-
   return (
     <div className="form--container">
       <form className="form" onSubmit={handleSubmit}>
@@ -148,4 +117,4 @@ const AddProductForm = ({ handelFormClose, selectedProduct }) => {
   );
 };
 
-export default AddProductForm;
+export default ProductEdit;

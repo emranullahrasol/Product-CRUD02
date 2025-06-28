@@ -6,7 +6,7 @@ import Stage from "./Stage";
 import ProductDelete from "./ProductDelete";
 import ProductDetails from "./ProductDetails";
 
-const ProductList = ({ product }) => {
+const ProductList = ({ product, handleEdit }) => {
   const [confirmation, setConfirmation] = useState(false);
   const [productDetails, setProductDetails] = useState(false);
 
@@ -73,7 +73,7 @@ const ProductList = ({ product }) => {
         </span>
         <span className="product--date">{product.date}</span>
         <span className="product--actions">
-          <FaPen className="icon" />
+          <FaPen className="icon" onClick={() => handleEdit(product)} />
           <FaTrash className="icon" onClick={handleDeleteModel} />
           <FaEye
             className="icon"

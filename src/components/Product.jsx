@@ -3,7 +3,7 @@ import ProductList from "./ProductList";
 import { BsCardList } from "react-icons/bs";
 import Input from "./Input";
 
-const Product = () => {
+const Product = ({ handleEdit }) => {
   const [products, setProducts] = useState([]);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(null);
@@ -72,7 +72,11 @@ const Product = () => {
         ) : (
           <>
             {searchedProducts.map((product) => (
-              <ProductList product={product} key={product.id} />
+              <ProductList
+                product={product}
+                handleEdit={handleEdit}
+                key={product.id}
+              />
             ))}
           </>
         )}
