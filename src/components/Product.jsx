@@ -26,7 +26,6 @@ const Product = ({ handleEdit }) => {
         setError(null);
         setProducts(data);
       } catch (err) {
-        console.log(err.message);
         setError(err.message);
       } finally {
         setLoading(false);
@@ -34,6 +33,20 @@ const Product = ({ handleEdit }) => {
     };
     fetchProducts();
   }, []);
+
+  const handleDelete = async (id) => {
+    try {
+      await fetch(`http://localhost:3003/products/${id}`, {
+        method: "Delete",
+      });
+
+      setProducts((prevProducts) =>
+        prevProducts.filter((product) => product.id !== id)
+      );
+    } catch (error) {
+      console.log(error);
+    }
+  };
 
   return (
     <div className="product--container">
@@ -75,6 +88,7 @@ const Product = ({ handleEdit }) => {
               <ProductList
                 product={product}
                 handleEdit={handleEdit}
+                handleDelete={handleDelete}
                 key={product.id}
               />
             ))}

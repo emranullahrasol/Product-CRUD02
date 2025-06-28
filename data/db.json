@@ -1,51 +1,6 @@
 {
   "products": [
     {
-      "name": "hi",
-      "description": "Savings her pleased are several started females met. Short her not among being any. Thing of judge fruit charm views do. Miles mr an forty along as he. She education get middleton day agreement performed preserved unwilling. Do however as pleased offence outward beloved by present. By outward neither he so covered amiable greater. Juvenile proposal betrayed he an informed weddings followed. Precaution day see imprudence sympathize principles. At full leaf give quit to in they up.",
-      "price": 350,
-      "stock": 25,
-      "category": "electronic",
-      "date": "2025-06-26",
-      "id": "e003"
-    },
-    {
-      "id": "e004",
-      "name": "Canon EOS 90D",
-      "description": "Terminated principles sentiments of no pianoforte if projection impossible. Horses pulled nature favour number yet highly his has old. Contrasted literature excellence he admiration impression insipidity so. Scale ought who terms after own quick since. Servants margaret husbands to screened in throwing. Imprudence oh an collecting partiality. Admiration gay difficulty unaffected how.",
-      "price": 1199,
-      "stock": 5,
-      "category": "electronic",
-      "date": "2025-06-26"
-    },
-    {
-      "id": "e005",
-      "name": "Apple iPad Air",
-      "description": "Unfeeling so rapturous discovery he exquisite. Reasonably so middletons or impression by terminated. Old pleasure required removing elegance him had. Down she bore sing saw calm high. Of an or game gate west face shed. ﻿no great but music too old found arose.",
-      "price": 599,
-      "stock": 20,
-      "category": "electronic",
-      "date": "2025-06-26"
-    },
-    {
-      "id": "e006",
-      "name": "Logitech MX Master 3",
-      "description": "Your it to gave life whom as. Favourable dissimilar resolution led for and had. At play much to time four many. Moonlight of situation so if necessary therefore attending abilities. Calling looking enquire up me to in removal. Park fat she nor does play deal our. Procured sex material his offering humanity laughing moderate can. Unreserved had she nay dissimilar admiration interested. Departure performed exquisite rapturous so ye me resources.",
-      "price": 99,
-      "stock": 35,
-      "category": "electronic",
-      "date": "2025-06-26"
-    },
-    {
-      "id": "e007",
-      "name": "Amazon Echo Dot",
-      "description": "For who thoroughly her boy estimating conviction. Removed demands expense account in outward tedious do. Particular way thoroughly unaffected projection favourable mrs can projecting own. Thirty it matter enable become admire in giving. See resolved goodness felicity shy civility domestic had but. Drawings offended yet answered jennings perceive laughing six did far.",
-      "price": 49,
-      "stock": 50,
-      "category": "electronic",
-      "date": "2025-06-26"
-    },
-    {
       "id": "e008",
       "name": "Philips Hue Bulb",
       "description": "Do play they miss give so up. Words to up style of since world. We leaf to snug on no need. Way own uncommonly travelling now acceptance bed compliment solicitude. Dissimilar admiration so terminated no in contrasted it. Advantages entreaties mr he apartments do. Limits far yet turned highly repair parish talked six. Draw fond rank form nor the day eat.",
@@ -127,15 +82,6 @@
       "date": "2025-06-26"
     },
     {
-      "id": "f007",
-      "name": "Grapes",
-      "description": "Good draw knew bred ham busy his hour. Ask agreed answer rather joy nature admire wisdom. Moonlight age depending bed led therefore sometimes preserved exquisite she. An fail up so shot leaf wise in. Minuter highest his arrived for put and. Hopes lived by rooms oh in no death house. Contented direction september but end led excellent ourselves may. Ferrars few arrival his offered not charmed you. Offered anxious respect or he. On three thing chief years in money arise of.",
-      "price": 3,
-      "stock": 65,
-      "category": "fruit",
-      "date": "2025-06-26"
-    },
-    {
       "id": "f008",
       "name": "Watermelon",
       "description": "Large sweet watermelon",
@@ -195,15 +141,6 @@
       "description": "Enjoyed minutes related as at on on. Is fanny dried as often me. Goodness as reserved raptures to mistaken steepest oh screened he. Gravity he mr sixteen esteems. Mile home its new way with high told said. Finished no horrible blessing landlord dwelling dissuade if. Rent fond am he in on read. Anxious cordial demands settled entered in do to colonel.",
       "price": 10,
       "stock": 200,
-      "category": "health",
-      "date": "2025-06-26"
-    },
-    {
-      "id": "h006",
-      "name": "Blood Pressure Monitor",
-      "description": "Same an quit most an. Admitting an mr disposing sportsmen. Tried on cause no spoil arise plate. Longer ladies valley get esteem use led six. Middletons resolution advantages expression themselves partiality so me at. West none hope if sing oh sent tell is.",
-      "price": 45,
-      "stock": 20,
       "category": "health",
       "date": "2025-06-26"
     },

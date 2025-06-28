@@ -6,7 +6,7 @@ import Stage from "./Stage";
 import ProductDelete from "./ProductDelete";
 import ProductDetails from "./ProductDetails";
 
-const ProductList = ({ product, handleEdit }) => {
+const ProductList = ({ product, handleEdit, handleDelete }) => {
   const [confirmation, setConfirmation] = useState(false);
   const [productDetails, setProductDetails] = useState(false);
 
@@ -26,17 +26,6 @@ const ProductList = ({ product, handleEdit }) => {
     setProductDetails(false);
   };
 
-  const DeleteProduct = async () => {
-    try {
-      await fetch(`http://localhost:3003/products/${product.id}`, {
-        method: "Delete",
-      });
-      setConfirmation(false);
-    } catch (error) {
-      console.log(error);
-    }
-  };
-
   return (
     <>
       {productDetails && (
@@ -48,7 +37,10 @@ const ProductList = ({ product, handleEdit }) => {
       {confirmation && (
         <ProductDelete
           handleDeleteModelClose={handleDeleteModelClose}
-          onDelete={DeleteProduct}
+          onDelete={() => {
+            handleDelete(product.id);
+            setConfirmation(true);
+          }}
         />
       )}
 

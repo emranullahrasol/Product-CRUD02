@@ -14,16 +14,13 @@ const App = () => {
     setFormOpen(true);
   };
 
-  const handleEditClose = () => {
-    setSelectedProduct(null);
-    setFormOpen(false);
-  };
-
   const handelFormOpen = () => {
     setFormOpen(true);
   };
 
   const handelFormClose = () => {
+    setFormOpen(false);
+    setSelectedProduct(null);
     setFormOpen(false);
   };
 

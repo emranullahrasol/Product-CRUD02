@@ -14,7 +14,6 @@ const AddProductForm = ({ handelFormClose, selectedProduct }) => {
   const [date, setDate] = useState("");
   const [selectedId, setSelectedId] = useState(null);
 
-  // If editing, populate fields
   useEffect(() => {
     if (selectedProduct) {
       setName(selectedProduct.name);
@@ -142,7 +141,11 @@ const AddProductForm = ({ handelFormClose, selectedProduct }) => {
             placeholder="Enter product stock"
           />
         </div>
-        <Button type={"submit"} btnText="add new product" btnIcon="" />
+        <Button
+          type={"submit"}
+          btnText={selectedId === null ? "add new product" : "update product"}
+          btnIcon=""
+        />
       </form>
     </div>
   );
